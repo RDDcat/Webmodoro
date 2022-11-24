@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" href="resources/register.css" type="text/css"></link>
 <title>웹모도로</title>
 </head>
 <nav>
