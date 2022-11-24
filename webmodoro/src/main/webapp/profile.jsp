@@ -7,17 +7,28 @@
 	<link rel="stylesheet" href="resources/register.css" type="text/css"></link>
 <title>웹모도로</title>
 </head>
-<nav>
-	 <ul>
-      <li><a class="active" href="welcome.html"><img alt="" src="img/icon-pomodoro.png" weigh=50px height=30px></a></li>
-      <li><a href="todo.jsp">To-do</a></li>
-      <li><a href="clock.jsp">뽀모도로</a></li>
-      <li><a href="profile.jsp">프로필</a></li>
-      <li><a href="ranking.jsp">랭킹</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-</nav>
 <body>
-
+<jsp:include page="nav.html"></jsp:include>
+<div>
+	<table>
+		<tr>
+			<th> 계정 </th> 
+			<td> <%= 1  %></td> 
+		</tr>
+		<tr>
+			<th> 이름 </th> 
+			<td> <%= 1 %></td> 
+		</tr>
+		<tr>
+			<th> 학번 </th> 
+			<td> <%= 1 %></td> 
+		</tr>
+		<tr>
+			<th> 학과 </th> 
+			<td> <%= 1 %></td> 
+		</tr>
+	</table>
+</div> 
+<jsp:include page="todo_list.jsp"></jsp:include>
 </body>
 </html>

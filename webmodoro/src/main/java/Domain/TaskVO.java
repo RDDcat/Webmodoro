@@ -6,6 +6,7 @@ public class TaskVO {
 	long taskId;
 	long userId;
 	String taskDescribtion;
+	boolean isTask = false;
 	Timestamp saveTime;
 	Timestamp endTime;	
 

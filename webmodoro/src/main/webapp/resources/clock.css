@@ -3,27 +3,27 @@
 html {
     height: 100vh;
 }
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-ul:after{
+nav ul:after{
     content:'';
     display: block;
     clear:both;
 }
-li {
+nav li {
     float: left;
 }
-li a {
+nav li a {
     display: block;
     color: #111;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-li a:hover:not(.active) {
+nav li a:hover:not(.active) {
     background-color: #dbdbdb;
 }
 
