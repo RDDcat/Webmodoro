@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 	<link rel="stylesheet" href="resources/register.css" type="text/css"></link>
+	<link rel="stylesheet" href="resources/clock.css" type="text/css"></link>
 <title>웹모도로</title>
-<link rel="stylesheet" href="resources/clock.css" type="text/css"></link>
 </head>
 <nav>
 	 <ul>
-      <li><a class="active" href="#home"><img alt="" src="img/icon-pomodoro.png" weigh=50px height=30px></a></li>
+      <li><a class="active" href="welcome.html"><img alt="" src="img/icon-pomodoro.png" weigh=50px height=30px></a></li>
       <li><a href="todo.jsp">To-do</a></li>
       <li><a href="clock.jsp">뽀모도로</a></li>
       <li><a href="profile.jsp">프로필</a></li>
