@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" href="resources/register.css" type="text/css"></link>
 	<link rel="stylesheet" href="resources/clock.css" type="text/css"></link>
 <title>웹모도로</title>
 </head>
+<body>
 <nav>
 	 <ul>
       <li><a class="active" href="welcome.html"><img alt="" src="img/icon-pomodoro.png" weigh=50px height=30px></a></li>
@@ -18,28 +18,29 @@
       <li><a href="about.html">About</a></li>
     </ul>
 </nav>
-<body>
-<div class="timer-container">
-        <div id="timer" class="timer">
-            <div class="cover1"></div>
-            <div id="lines">
-            </div>
-            <div id="fins">
-            </div>
-            <div id="num-container">
-            </div>
-            <div class="cover2"></div>
-        </div>
-    </div>
-    <div class="time-container">
-        <div id="remain-time" class="remain-time"></div>
-        <div id="total-time" class="total-time"></div>
-    </div>
-    <div class="button-container">
-        <button id="control" class="control"><i class="fas fa-pause"></i></button>
-    </div>
-    <script src="js/index.js"></script>
-<div>
+<div class="clock">
+	<div class="timer-container">
+	        <div id="timer" class="timer">
+	            <div class="cover1"></div>
+	            <div id="lines">
+	            </div>
+	            <div id="fins">
+	            </div>
+	            <div id="num-container">
+	            </div>
+	            <div class="cover2"></div>
+	        </div>
+	    </div>
+	    <div class="time-container">
+	        <div id="remain-time" class="remain-time"></div>
+	        <div id="total-time" class="total-time"></div>
+	    </div>
+	    <div class="button-container">
+	        <button id="control" class="control"><i class="fas fa-pause"></i></button>
+	    </div>
+	    <script src="js/index.js"></script>
+	<div>
+</div>
 <p>할일 목록 (TODO List)</p>
 </div>
 </body>

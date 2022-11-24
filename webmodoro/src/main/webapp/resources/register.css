@@ -32,7 +32,6 @@ li a:hover:not(.active) {
 body {
 	line-height: 1.6;
 	max-width: 1200px;
-	margin: 0 auto;
 	font-family: "맑은 고딕", '돋움', '고딕';
 }
 

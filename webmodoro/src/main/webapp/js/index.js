@@ -134,5 +134,3 @@ if(control) {
 if(remainTime && totalTime) {
     paintTime();
 }
-
-play();
