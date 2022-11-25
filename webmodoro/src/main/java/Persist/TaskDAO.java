@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,27 @@ public class TaskDAO {
 
 	// insert
 	// insert시 시간 저장
-	public void save() {
+	public boolean save(long userId, TaskVO taskVO) {
 		connect();
+		String sql = "insert into tbl_task(user_id, task_describtion, is_task, save_time, end_time) values (?,?,?,?,?)"; 
 		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setLong(1, userId);
+			pstmt.setString(2, taskVO.getTaskDescribtion()); 
+			pstmt.setBoolean(3, taskVO.isTask()); 
+			pstmt.setTimestamp(4, new Timestamp(System.currentTimeMillis())); 
+			pstmt.setTimestamp(5, taskVO.getEndTime());
+			pstmt.executeUpdate(); 
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false; 
+		}
+		finally {
+			disconnect();
+			return true;
+		}
 	}
 	// select
 	public TaskVO load() {

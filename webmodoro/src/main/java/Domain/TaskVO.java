@@ -9,7 +9,14 @@ public class TaskVO {
 	boolean isTask = false;
 	Timestamp saveTime;
 	Timestamp endTime;	
+	
 
+	public boolean isTask() {
+		return isTask;
+	}
+	public void setTask(boolean isTask) {
+		this.isTask = isTask;
+	}
 	public long getTaskId() {
 		return taskId;
 	}
@@ -28,7 +35,7 @@ public class TaskVO {
 	public void setTaskDescribtion(String taskDescribtion) {
 		this.taskDescribtion = taskDescribtion;
 	}
-	public Timestamp getSaveTime() {
+	public Timestamp getSaveTime() {		
 		return saveTime;
 	}
 	public void setSaveTime(Timestamp saveTime) {
