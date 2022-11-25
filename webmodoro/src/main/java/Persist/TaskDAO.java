@@ -45,7 +45,6 @@ public class TaskDAO {
 	}
 	// select
 	public TaskVO load() {
-		connect();
 		return null;
 	}
 	// todo list에서 쓸거

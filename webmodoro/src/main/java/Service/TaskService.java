@@ -1,5 +1,8 @@
 package Service;
 
+import java.util.List;
+
+import Domain.TaskVO;
 import Persist.TaskDAO;
 
 public class TaskService {
@@ -13,8 +16,8 @@ public class TaskService {
 	public void loadTask() {
 		
 	}
-	public void loadTaskList() {
-		
+	public List<TaskVO> loadALLTask(long userId) {
+		return taskDAO.loadAll(userId);		
 	}
 
 }
