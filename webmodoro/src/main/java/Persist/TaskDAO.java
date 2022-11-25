@@ -17,6 +17,7 @@ public class TaskDAO {
 	
 
 	// insert
+	// insert시 시간 저장
 	public void save() {
 		connect();
 		
@@ -31,7 +32,13 @@ public class TaskDAO {
 		return null;		
 	}
 	// update
-	public void update() {
+	// 테스크 완료 업데이트
+	public void updateTaskDone() {
+		connect();
+		
+	}
+	// 테스크 내용 수정 업데이트
+	public void updateTask() {
 		connect();
 		
 	}
