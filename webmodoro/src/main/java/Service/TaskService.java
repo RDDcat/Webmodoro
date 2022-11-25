@@ -7,17 +7,17 @@ import Persist.TaskDAO;
 
 public class TaskService {
 	TaskDAO taskDAO = new TaskDAO();
-	public void saveTask(long id) {
-		// TODO id 값이 없으면 디비에 새로저장
-		
-		// TODO id 값이 있으면 디비에 업데이트
-		
+	public void saveTask(long userid, TaskVO taskVO) {
+		taskDAO.save(userid, taskVO);
 	}
 	public void loadTask() {
 		
 	}
 	public List<TaskVO> loadALLTask(long userId) {
 		return taskDAO.loadAll(userId);		
+	}
+	public void deleteTask(long TaskId) {
+		taskDAO.delete(TaskId);
 	}
 
 }

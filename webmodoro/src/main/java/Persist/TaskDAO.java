@@ -51,9 +51,10 @@ public class TaskDAO {
 	public List<TaskVO> loadAll(long userId) {
 		connect();
 		ArrayList<TaskVO> taskVO = new ArrayList<TaskVO>();
-		String sql = "select * from tbl_task ";
+		String sql = "select * from tbl_task where user_id = ?";
 		try {
 			pstmt = conn.prepareStatement (sql);
+			pstmt.setLong(1, userId); 
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				TaskVO vo= new TaskVO();
@@ -121,7 +122,7 @@ public class TaskDAO {
 	}
 	public boolean delete(long taskId) {
 		connect();
-		String sql = "DELETE FROM tbl_task WHERE id=?"; 
+		String sql = "DELETE * FROM tbl_task WHERE id=?"; 
 		System.out.println("Delete 실행");
 		
 		try {

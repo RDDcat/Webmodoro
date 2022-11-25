@@ -18,7 +18,7 @@ import Domain.UserVO;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns= {"/todo.jsp", "/clock.jsp" , "/profile.jsp", "/ranking.jsp"})
+@WebFilter(urlPatterns= {"/todo.jsp", "/clock.jsp" , "/profile.jsp", "/ranking.jsp", "/LoadTaskServlet" , "/LoadClockServlet", "/ProfileServlet"})
 public class LoginFilter extends HttpFilter implements Filter {
 
     public LoginFilter() {
@@ -49,9 +49,10 @@ public class LoginFilter extends HttpFilter implements Filter {
 			httpResponse.sendRedirect("/webmodoro/login.jsp");
 			return;
 		}
-
-		// pass the request along the filter chain
+		System.out.println("로그인 패스함 머임" );
+		
 		chain.doFilter(request, response);
+
 	}
 
 	/**

@@ -38,13 +38,13 @@ public class UserDAO {
 		}		
 	}
 	// select
-	public UserVO load() {
+	public UserVO load(long userId) {
 		connect();
 		UserVO userVO = new UserVO();
 		String sql = "select * from tbl_user where user_id= ?";
 		try {
 			pstmt = conn.prepareStatement (sql);
-			pstmt.setString(1, userVO.getPasswd());
+			pstmt.setLong(1, userId);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			userVO.setUserId(rs.getLong("user_id"));

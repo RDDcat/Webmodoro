@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Domain.TaskVO;
 import Service.TaskService;
 
 /**
@@ -35,10 +37,14 @@ public class SaveTaskServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); 
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String bufTaskId = request.getParameter("taskid");
-		Long taskId = Long.parseLong(bufTaskId, 50);
+		HttpSession session = request.getSession();
+		long userId = (long)session.getAttribute("userId");
+		
+		String taskDescribtion = (String)request.getParameter("taskDescribtion");
+		TaskVO taskVO = new TaskVO();
+		taskVO.setTaskDescribtion(taskDescribtion);
 
-		taskService.saveTask(taskId);
+		taskService.saveTask(userId, taskVO);
 		
 	}
 

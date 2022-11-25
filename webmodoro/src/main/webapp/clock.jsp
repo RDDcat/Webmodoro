@@ -27,7 +27,8 @@
 	        <div id="total-time" class="total-time"></div>
 	    </div>
 	    <div class="button-container">
-	        <button id="control" class="control"><i class="fas fa-pause"></i></button>
+	        <img src="img/play.png" weigh=60px height=60px onclick="play();">
+	        <img src="img/stop.png" weigh=60px height=60px onclick="pause();">
 	    </div>
 	    <script src="js/index.js"></script>
 	<div>

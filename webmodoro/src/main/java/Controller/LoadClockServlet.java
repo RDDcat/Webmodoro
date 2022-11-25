@@ -18,11 +18,12 @@ import Service.TaskService;
 import Service.UserService;
 
 /**
- * Servlet implementation class DeleteTaskServlet
+ * Servlet implementation class LoadClockServlet
  */
-@WebServlet("/DeleteTaskServlet")
-public class DeleteTaskServlet extends HttpServlet {
+@WebServlet("/LoadClockServlet")
+public class LoadClockServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private TaskService taskService = new TaskService();
 	private UserService userService = new UserService();
 
@@ -30,17 +31,10 @@ public class DeleteTaskServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8"); 
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String taskIdbuf = request.getParameter("taskId");
-		long taskId = Long.parseLong(taskIdbuf);
-		
-		taskService.deleteTask(taskId);		
-		
 		HttpSession session = request.getSession();
-		// 미해결 할일 로드
+
 		List<TaskVO> taskList = new ArrayList<TaskVO>();
 		
 		// 유저 아이디로 유저 정보 가져오기
@@ -65,7 +59,6 @@ public class DeleteTaskServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DeleteTaskServlet 의 Post");
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

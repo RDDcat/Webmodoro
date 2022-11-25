@@ -9,6 +9,10 @@ import Persist.UserDAO;
 public class UserService {
 	UserDAO userDAO = new UserDAO();
 	
+	public UserVO getUserVO(long userId) {
+		return userDAO.load(userId);
+	}
+	
 	public long checkLogin(String userName, String passwd) {
 		long userId = userDAO.login(userName, passwd);
 		return userId;

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="Domain.TaskVO"%>
+<%@page import="Domain.UserVO"%>
+<% UserVO user = (UserVO)request.getAttribute("userVO");  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,23 +15,14 @@
 <div>
 	<table>
 		<tr>
-			<th> 계정 </th> 
-			<td> <%= 1  %></td> 
+			<th> 유저 이름 </th> 
+			<td> <%= user.getUserName() %></td> 
 		</tr>
 		<tr>
-			<th> 이름 </th> 
-			<td> <%= 1 %></td> 
-		</tr>
-		<tr>
-			<th> 학번 </th> 
-			<td> <%= 1 %></td> 
-		</tr>
-		<tr>
-			<th> 학과 </th> 
-			<td> <%= 1 %></td> 
+			<th> 연락처 </th> 
+			<td> <%= user.getContact() %></td> 
 		</tr>
 	</table>
 </div> 
-<jsp:include page="todo_list.jsp"></jsp:include>
 </body>
 </html>

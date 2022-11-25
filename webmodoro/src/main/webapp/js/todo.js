@@ -49,7 +49,11 @@ function newElement() {
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
-      div.style.display = "none";
+      div.style.display = "none";      
     }
   }
+}
+
+function myFunction(){
+	alert("아이디를 입력하세요.");
 }

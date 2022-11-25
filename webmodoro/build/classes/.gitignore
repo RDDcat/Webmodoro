@@ -1,5 +1,4 @@
-/Service/
 /Controller/
-/Domain/
-/Persist/
 /Filter/
+/Service/
+/Persist/
