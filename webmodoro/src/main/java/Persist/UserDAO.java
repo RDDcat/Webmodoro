@@ -3,6 +3,7 @@ package Persist;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Domain.UserVO;
@@ -16,14 +17,49 @@ public class UserDAO {
 	
 	
 	// insert
-	public void save() {
+	public boolean save(UserVO userVO) {
 		connect();
+		String sql = "insert into tbl_user(user_name, passwd, contact) values (?,?,?)";
 		
+		try {
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setString(1, userVO.getPasswd());
+			pstmt.setString(2, userVO.getUserName());
+			pstmt.setString(3, userVO.getContact());
+			pstmt.executeUpdate(); 
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		finally {
+			disconnect();
+			return true;
+		}		
 	}
 	// select
 	public UserVO load() {
 		connect();
-		return null;		
+		UserVO userVO = new UserVO();
+		String sql = "select * from tbl_user where user_id= ?";
+		try {
+			pstmt = conn.prepareStatement (sql);
+			pstmt.setString(1, userVO.getPasswd());
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			userVO.setUserId(rs.getLong("user_id"));
+			userVO.setUserName(rs.getString("user_name"));
+			userVO.setPasswd (rs.getString("passwd")); 
+			userVO.setContact(rs.getString("contact"));			
+			rs.close();
+		} 
+		catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		finally { 
+			disconnect();
+		}
+		return userVO;
 	}
 	// update
 	public void update() {
