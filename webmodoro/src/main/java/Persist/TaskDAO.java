@@ -3,7 +3,9 @@ package Persist;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import Domain.TaskVO;
@@ -27,25 +29,96 @@ public class TaskDAO {
 		connect();
 		return null;
 	}
-	public List<TaskVO> loadAll() {
+	// todo list에서 쓸거
+	public List<TaskVO> loadAll(long userId) {
 		connect();
-		return null;		
+		ArrayList<TaskVO> taskVO = new ArrayList<TaskVO>();
+		String sql = "select * from tbl_task ";
+		try {
+			pstmt = conn.prepareStatement (sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				TaskVO vo= new TaskVO();
+				vo.setTaskId(rs.getLong("task_id"));
+				vo.setTaskDescribtion(rs.getString("task_describtion"));
+				taskVO.add(vo);
+			}
+		rs.close();
+		} 
+		catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		finally { 
+			disconnect();
+		}
+		return taskVO;
 	}
 	// update
 	// 테스크 완료 업데이트
-	public void updateTaskDone() {
+	public boolean updateTaskDone(TaskVO taskVO) {
+		return updateTaskDone(taskVO.getTaskId());		
+	}
+	public boolean updateTaskDone(long taskId) {
 		connect();
+		String sql = "update tbl_task set is_task=true where id=?"; 
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, taskId); 
+			pstmt.executeUpdate(); 
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false; 
+		}
+		finally {
+			disconnect();
+			return true;
+		}		
 		
 	}
 	// 테스크 내용 수정 업데이트
-	public void updateTask() {
+	public boolean updateTask(TaskVO taskVO) {
 		connect();
+		String sql = "update tbl_task set task_describtion=? where id=?"; 
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, taskVO.getTaskDescribtion()); 
+			pstmt.setLong(2, taskVO.getTaskId()); 
+			pstmt.executeUpdate(); 
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false; 
+		}
+		finally {
+			disconnect();
+			return true;
+		}				
 	}
 	// delete
-	public void delete() {
+	public boolean delete(TaskVO taskVO) {
+		return delete(taskVO.getTaskId());
+	}
+	public boolean delete(long taskId) {
 		connect();
+		String sql = "DELETE FROM tbl_task WHERE id=?"; 
+		System.out.println("Delete 실행");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, taskId);
+			pstmt.executeUpdate();
+		} 
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false; 
+		}
+		finally {
+			disconnect();
+			return true;
+		}				
 	}
 	
 	void connect() {
