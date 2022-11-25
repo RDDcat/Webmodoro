@@ -9,17 +9,22 @@
 </head>
 <jsp:include page="nav.html"></jsp:include>
 <body>
-<header>로그인 </header>
-
-<div>
-	<form name="form1" action="/webmodoro/LoginUserServlet?cmd=login" method="post"> 
+<header>회원가입</header>
+<div>	
+	<form name="form1" action="/webmodoro/LoginUserServlet?cmd=register" method="post"> 
+	<fieldset>
+		<legend id=slow>개인정보 입력</legend> 
 		<ul>
 			<li>ID: <input type="text" name="name" autofocus required placeholder="공백없이 입력하세요"></li> 
-			<li>PASSWORD: <input type="password" name="passwd" required placeholder="공백없이 입력하세요"></li> 			
+			<li>PASSWORD: <input type="password" name="passwd" required placeholder="공백없이 입력하세요"></li> 
+			<li>contact : <input type="text" name="contact" required placeholder="공백없이 입력하세요"></li> 
 		</ul> 
+	</fieldset>
+	<fieldset>
 		<input type="submit" name="submit" value="보내기">
-		<button><a href="register.jsp">회원가입</a></button>
-	</form> 
+		<input type="reset" name="reset" value="다시 작성"> 
+	</fieldset>
+</form> 
 </div>
 </body>
 </html>

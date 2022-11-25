@@ -23,8 +23,8 @@ public class UserDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql); 
-			pstmt.setString(1, userVO.getPasswd());
-			pstmt.setString(2, userVO.getUserName());
+			pstmt.setString(1, userVO.getUserName());
+			pstmt.setString(2, userVO.getPasswd());
 			pstmt.setString(3, userVO.getContact());
 			pstmt.executeUpdate(); 
 		} 
@@ -70,6 +70,28 @@ public class UserDAO {
 	public void delete() {
 		connect();
 		
+	}
+	// select
+	public long login(String userName, String passwd) {
+		connect();
+		long userId =0l;
+		String sql = "select * from tbl_user where user_name=? AND passwd=?";
+		try {
+			pstmt = conn.prepareStatement (sql);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, passwd);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			userId = rs.getLong("user_id");	
+			rs.close();
+		} 
+		catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		finally { 
+			disconnect();
+		}
+		return userId;
 	}
 	
 	void connect() {

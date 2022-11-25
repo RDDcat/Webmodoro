@@ -6,6 +6,14 @@ public class UserVO {
 	String passwd;
 	String contact;
 	
+	public UserVO(String name, String passwd, String contact) {
+		this.userName = name;
+		this.passwd = passwd;
+		this.contact = contact;
+	}
+	public UserVO() {
+		// TODO Auto-generated constructor stub
+	}
 	public long getUserId() {
 		return userId;
 	}

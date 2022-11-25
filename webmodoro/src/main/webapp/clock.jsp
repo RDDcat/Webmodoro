@@ -32,7 +32,7 @@
 	    <script src="js/index.js"></script>
 	<div>
 </div>
-<p>할일 목록 (TODO List)</p>
+<jsp:include page="todo_list.jsp"></jsp:include>
 </div>
 </body>
 </html>

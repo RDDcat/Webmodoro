@@ -9,7 +9,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Domain.UserVO;
 
@@ -38,11 +40,14 @@ public class LoginFilter extends HttpFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		System.out.println("LoginFilter : Start " );
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
+		HttpSession session = httpRequest.getSession();
 		
-		if((UserVO)request.getAttribute("userVO") == null) {
+		if(session.getAttribute("userId") == null) {
 			System.out.println("로그인해야함" );
 			httpResponse.sendRedirect("/webmodoro/login.jsp");
+			return;
 		}
 
 		// pass the request along the filter chain
